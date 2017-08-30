@@ -1,28 +1,46 @@
-# DesafioMarvel
+Bem vindo ao Desafio Marvel!
+===================
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
+![desafio](https://vignette2.wikia.nocookie.net/logopedia/images/a/a8/Marvel-logo.png)
 
-## Development server
+----------
+Quer dar uma olhadinha? - [demonstração](https://marveil-quiz-desafio.firebaseapp.com)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Como executar o Projeto
+-------------
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+Faça o download do repositorio, execute o `npm install` para instalar as dependencias do projeto.
+
+> **Obs:**
+
+> - É necessario que se tenha o "npm" instalado na maquina.
+
+#### <i class="icon-folder-open"></i> Inicie o servidor
+Execute `ng serve`
+
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Execute `ng build` para construir o projeto. O projeto será construido na pasta`dist/`. Use a flag`-prod` para gerar o build de produção.
 
-## Running unit tests
+## Unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Execute `ng test` para executar os testes unitarios via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## End-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Execute `ng e2e` para os testes end-to-end via [Protractor](http://www.protractortest.org/).
 
-## Further help
+Antes de executar os testes, certifique-se de que você está atendendo o aplicativo via `ng serve`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+----------
+
+
+Dependências
+-------------------
+Abaixo as tecnologias que foram utilizadas no projeto:
+
+ - Angular 4
+ - Milligram
+ - Marvel API
