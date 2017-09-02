@@ -42,5 +42,5 @@ Dependências
 Abaixo as tecnologias que foram utilizadas no projeto:
 
  - Angular 4
- - Milligram
+ - MaterializeCSS
  - Marvel API
