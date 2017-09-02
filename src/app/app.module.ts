@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { MaterializeModule } from 'angular2-materialize';
-import { AppService } from './app.service';
 
 
 @NgModule({
@@ -18,7 +17,7 @@ import { AppService } from './app.service';
     MaterializeModule,
     AppRoutingModule
   ],
-  providers: [AppService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

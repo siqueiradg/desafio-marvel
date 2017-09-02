@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+      <div class="score">
+        <div class="row">
+          <div class="col s2">
+              <img src="https://robohash.org/{{name}}.png?set=set2" class="responsive-img perfil circle">
+            </div>
+          <div class="col s8">
+            <div class="name-player">
+                <p>{{name}}</p>
+            </div>
+          </div>
+          <div class="col s2">
+            <div class="score-points">
+              <p>{{points}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <h1 class="title-question"># {{numberQuestion}} - Question</h1>
+      </div>
+
+      <div class="score question">
+          <div class="row">
+            <div class="col s12 m6 l6">
+              <div class="img-marvel">
+                <img src="https://robohash.org/{{name}}.png?set=set2" class="responsive-img">
+                <button class="waves-effect waves-light btn grey darken-4 dica">I give up, who is it?</button>
+              </div>
+            </div>
+            <div class="col s12 m6 l6">
+                <div class="input-question">
+                    <input placeholder="What is your name?" id="name" type="text" class="validate" #pergunta>
+                    <button class="col s12 m6 l6 waves-effect waves-light btn teal darken-4 right">Answer</button>
+                    <button class="col s12 m6 l6 waves-effect waves-light btn blue darken-4 right next-person">Next</button>
+                </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
