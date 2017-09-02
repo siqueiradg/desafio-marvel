@@ -9,10 +9,10 @@ const routes: Routes = [
   },
   { path: 'question',
     loadChildren: 'app/question/question.module#QuestionModule',
-  }
-  // { path: 'score',
-  //   loadChildren: 'app/score/score.module#ScoreModule',
-  // },
+  },
+  { path: 'score',
+    loadChildren: 'app/score/score.module#ScoreModule',
+  },
 ];
 
 @NgModule({
