@@ -1,0 +1,20 @@
+.logo{
+  margin: 30px 0;
+}
+.score{
+  color:#fff;
+}
+.score h1{
+  font-size:24px;
+}
+.score p{
+  font-size: 18px;
+  color:#fafafa;
+}
+
+.share{
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  margin: 20px 0;
+}

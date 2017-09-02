@@ -8,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ScoreComponent implements OnInit {
+
+  name: string;
+  score: number;
+
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.name = localStorage.getItem('namePlayer');
+    this.score = 9;
+  }
 }
