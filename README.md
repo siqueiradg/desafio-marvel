@@ -24,16 +24,6 @@ Execute `ng serve`
 
 Execute `ng build` para construir o projeto. O projeto será construido na pasta`dist/`. Use a flag`-prod` para gerar o build de produção.
 
-## Unit tests
-
-Execute `ng test` para executar os testes unitarios via [Karma](https://karma-runner.github.io).
-
-## End-to-end tests
-
-Execute `ng e2e` para os testes end-to-end via [Protractor](http://www.protractortest.org/).
-
-Antes de executar os testes, certifique-se de que você está atendendo o aplicativo via `ng serve`.
-
 ----------
 
 
@@ -44,3 +34,4 @@ Abaixo as tecnologias que foram utilizadas no projeto:
  - Angular 4
  - MaterializeCSS
  - Marvel API
+ - MD5 Lib

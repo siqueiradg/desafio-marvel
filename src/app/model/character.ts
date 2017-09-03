@@ -10,6 +10,6 @@ export interface Character {
   comics: any;
   series: any;
   stories: any;
-  events: Event;
+  events: any;
   urls: any;
 }
