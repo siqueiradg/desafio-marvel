@@ -1,6 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 
+import { QuestionService } from './question.service';
+
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -13,11 +15,13 @@ export class QuestionComponent implements OnInit {
   points: number;
   numberQuestion: number;
 
-  constructor() { }
+  constructor(private service: QuestionService) { }
 
   ngOnInit() {
     this.points = 50;
     this.numberQuestion = 1;
     this.name = localStorage.getItem('namePlayer');
+
+    this.service.getCharacters();
   }
 }
