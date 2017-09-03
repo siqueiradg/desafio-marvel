@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 
 import { Md5 } from 'ts-md5/dist/md5';
 
+declare var Materialize: any;
+
 @Injectable()
 export class QuestionService {
 
@@ -19,11 +21,15 @@ export class QuestionService {
     const timestamp = this.time.getTime();
     const hash = Md5.hashStr(timestamp + this.keyPrivate + this.keyPublic);
 
-    const urlApi = 'https://gateway.marvel.com:443/v1/public/characters?limit=45&apikey=' + this.keyPublic + '&ts=' + timestamp + '&hash=' + hash;
+    const urlApi = 'https://gateway.marvel.com:443/v1/public/characters?orderBy=-modified&limit=45&apikey=' + this.keyPublic + '&ts=' + timestamp + '&hash=' + hash;
 
     return this.http.get(urlApi).map(
       res => res.json()
     );
 
+  }
+
+  public notify(value: string): void {
+    Materialize.toast(value, 2000);
   }
 }

@@ -26,14 +26,14 @@
           <div class="row">
             <div class="col s12 m6 l6">
               <div class="img-marvel">
-                <img src="https://robohash.org/{{name}}.png?set=set2" class="responsive-img">
-                <button class="waves-effect waves-light btn grey darken-4 dica">I give up, who is it?</button>
+                <img src="{{ image }}" class="responsive-img">
+                <button class="waves-effect waves-light btn grey darken-4 dica" (click)="useTip()">give up, who is it?</button>
               </div>
             </div>
             <div class="col s12 m6 l6">
                 <div class="input-question">
-                    <input placeholder="What is your name?" id="name" type="text" class="validate" #pergunta>
-                    <button class="col s12 m6 l6 waves-effect waves-light btn teal darken-4 right" (click)="answerQuestion(pergunta.value)">Answer</button>
+                    <input placeholder="What is your name?" id="name" type="text" class="validate" #nameCharacter>
+                    <button class="col s12 m6 l6 waves-effect waves-light btn teal darken-4 right" (click)="answerQuestion(nameCharacter.value)">Answer</button>
                     <button class="col s12 m6 l6 waves-effect waves-light btn blue darken-4 right next-person" (click)="nextQuestion()">Next</button>
                 </div>
               </div>
