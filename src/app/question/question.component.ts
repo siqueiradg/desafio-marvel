@@ -19,6 +19,8 @@ export class QuestionComponent implements OnInit {
   numberQuestion: number;
   tip: boolean;
 
+  answer: boolean;
+
   listCharacter: Character[];
   character: Character;
   currentPositionList: number;
@@ -55,7 +57,6 @@ export class QuestionComponent implements OnInit {
 
   }
 
-
   getCharacter(): void {
     this.service.getCharacters().subscribe(
       (values) => {
@@ -75,13 +76,18 @@ export class QuestionComponent implements OnInit {
   }
 
   nextQuestion(): void {
-    if (this.numberQuestion < 10) {
-      this.numberQuestion++;
-      this.currentPositionList++;
-      this.loadDataQuestion();
+    if (this.answer) {
+      this.answer = false;
+      if (this.numberQuestion < 10) {
+        this.numberQuestion++;
+        this.currentPositionList++;
+        this.loadDataQuestion();
+      }else {
+        localStorage.setItem('finalScore', '' + this.points);
+        this.router.navigateByUrl('/score');
+      }
     }else {
-      localStorage.setItem('finalScore', '' + this.points);
-      this.router.navigateByUrl('/score');
+      this.service.notify('answer the question!');
     }
   }
 
@@ -92,32 +98,39 @@ export class QuestionComponent implements OnInit {
 
   answerQuestion(value: string): void {
     const nameApi = this.listCharacter[this.currentPositionList].name.toUpperCase();
-
-    // COMPARA E REALIZA A SOMA E NOTIFICAÇÃO DOS PONTOS
-    if (nameApi === value.toUpperCase()) {
-      if (!this.tip) {
-        this.addPoints();
-        this.nextQuestion();
-        this.service.notify('Congratulations! +1');
+    // GARANTE QUE A PERGUNTA NAO FOI RESPONDIDA
+    if (this.checkAnswer()) {
+      // COMPARA E REALIZA A SOMA E NOTIFICAÇÃO DOS PONTOS
+      if (nameApi === value.toUpperCase()) {
+        if (!this.tip) {
+          this.addPoints();
+          this.service.notify('Congratulations! +1');
+        }else {
+          this.tip = false;
+          this.service.notify('ok, nothing!');
+        }
+        this.answer = true;
       }else {
-        this.tip = false;
-        this.nextQuestion();
-        this.service.notify('Nothing!');
-      }
-    }else {
-      // AVISA SE ESTIVER VAZIO A RESPOSTA
-      if (value.length <= 0) {
-        this.service.notify('ops, answer is empty!');
-      }else {
-        this.subPoints();
-        this.nextQuestion();
-        this.service.notify('Wrong! -1');
+        // AVISA SE ESTIVER VAZIO A RESPOSTA
+        if (value.length <= 0) {
+          this.service.notify('ops, answer is empty!');
+        }else {
+          this.subPoints();
+          this.service.notify('Wrong! -1');
+          this.answer = true;
+        }
       }
     }
-    this.clearInputName();
+    // LIMPA O CAMPO DE RESPOSTA
+    this.inputName.nativeElement.value = '';
   }
 
-  clearInputName(): void {
-    this.inputName.nativeElement.value = '';
+  checkAnswer(): boolean {
+    // VERIFICA SE A PERGUNTA JA FOI RESPONDIDA
+    if (this.answer) {
+      this.service.notify('already answered!');
+      return false;
+    }
+    return true;
   }
 }
