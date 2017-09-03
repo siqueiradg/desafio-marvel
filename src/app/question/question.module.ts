@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { QuestionComponent } from './question.component';
 import { QuestionService } from './question.service';
 import { QuestionRoutingModule } from './question.routing.module';
+import { QuestionResolver } from './question.resolver';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { QuestionRoutingModule } from './question.routing.module';
   exports: [],
   declarations: [QuestionComponent],
   providers: [
-    QuestionService
+    QuestionService,
+    QuestionResolver
   ],
 })
 export class QuestionModule { }

@@ -1,9 +1,10 @@
 
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { QuestionService } from './question.service';
 import { Character } from '../model/character';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -18,9 +19,7 @@ export class QuestionComponent implements OnInit {
   points: number;
   numberQuestion: number;
   tip: boolean;
-
   answer: boolean;
-
   listCharacter: Character[];
   character: Character;
   currentPositionList: number;
@@ -28,7 +27,7 @@ export class QuestionComponent implements OnInit {
 
   @ViewChild('nameCharacter') inputName: ElementRef;
 
-  constructor(private service: QuestionService, private router: Router) { }
+  constructor(private service: QuestionService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.points = 0;
@@ -36,6 +35,7 @@ export class QuestionComponent implements OnInit {
     this.name = localStorage.getItem('namePlayer');
     this.currentPositionList = this.generateRandomPosition();
     this.getCharacter();
+    this.loadDataQuestion();
   }
 
   generateRandomPosition(): number {
@@ -58,12 +58,11 @@ export class QuestionComponent implements OnInit {
   }
 
   getCharacter(): void {
-    this.service.getCharacters().subscribe(
+    // OBTEM O DADO DO RESOLVER
+    this.route.data.subscribe(
       (values) => {
-        this.listCharacter = values['data']['results'];
-      },
-      error => console.log('Erro:', error),
-      () => this.loadDataQuestion()
+        this.listCharacter = values[0]['data']['results'];
+      }
     );
   }
 
