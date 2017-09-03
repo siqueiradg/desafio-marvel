@@ -1,5 +1,9 @@
 
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
 import { Md5 } from 'ts-md5/dist/md5';
 
 @Injectable()
@@ -9,16 +13,17 @@ export class QuestionService {
   private keyPublic = 'ced486b507201aa995f105b06eaa6235';
   private time = new Date();
 
-  constructor() {}
+  constructor(private http: Http) {}
 
-
-  public getCharacters(): void {
+  public getCharacters(): Observable<any[]> {
     const timestamp = this.time.getTime();
     const hash = Md5.hashStr(timestamp + this.keyPrivate + this.keyPublic);
 
-    const urlApi = 'https://gateway.marvel.com:443/v1/public/characters?limit=50&apikey=' + this.keyPublic + '&ts=' + timestamp + '&hash=' + hash;
+    const urlApi = 'https://gateway.marvel.com:443/v1/public/characters?limit=45&apikey=' + this.keyPublic + '&ts=' + timestamp + '&hash=' + hash;
 
-    console.log(urlApi);
+    return this.http.get(urlApi).map(
+      res => res.json()
+    );
 
   }
 }
