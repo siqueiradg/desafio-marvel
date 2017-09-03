@@ -4,7 +4,7 @@ Bem vindo ao Desafio Marvel!
 ![desafio](https://vignette2.wikia.nocookie.net/logopedia/images/a/a8/Marvel-logo.png)
 
 ----------
-Quer dar uma olhadinha? - [demonstração](https://marveil-quiz-desafio.firebaseapp.com)
+Quer dar uma olhadinha? - [demonstração](https://marvel-desafio.firebaseapp.com/)
 
 
 Como executar o Projeto
