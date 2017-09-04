@@ -51,8 +51,8 @@ export class QuestionComponent implements OnInit {
       this.currentPositionList++;
       this.loadDataQuestion();
     }else {
-      this.image = this.character.thumbnail.path + '.' + this.character.thumbnail.extension;
-      console.log(this.character.name); // LOG IMPORTANTE PARA QUEM NÃO CONHECE QUADRINHOS *EU
+      // Correção HTTP em HTTPS
+      this.image = this.character.thumbnail.path.replace('http://', 'https://') + '.' + this.character.thumbnail.extension;
     }
 
   }
