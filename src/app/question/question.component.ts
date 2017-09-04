@@ -56,7 +56,7 @@ export class QuestionComponent implements OnInit {
       // Correção HTTP em HTTPS
       this.image = this.character.thumbnail.path.replace('http://', 'https://') + '.' + this.character.thumbnail.extension;
       // hack para quem não entende nada de quadrinhos
-      console.log(this.character.name);
+      console.log(this.character.name.replace(this.regex, ''));
     }
 
   }
