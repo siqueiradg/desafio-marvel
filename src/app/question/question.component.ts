@@ -25,6 +25,8 @@ export class QuestionComponent implements OnInit {
   currentPositionList: number;
   image: string;
 
+  regex = /\b[ ][(]\w+[ ]\w+[)]|[ ][(]\w+\b[)]/g;
+
   @ViewChild('nameCharacter') inputName: ElementRef;
 
   constructor(private service: QuestionService, private router: Router, private route: ActivatedRoute) { }
@@ -53,6 +55,8 @@ export class QuestionComponent implements OnInit {
     }else {
       // Correção HTTP em HTTPS
       this.image = this.character.thumbnail.path.replace('http://', 'https://') + '.' + this.character.thumbnail.extension;
+      // hack para quem não entende nada de quadrinhos
+      console.log(this.character.name);
     }
 
   }
@@ -92,15 +96,19 @@ export class QuestionComponent implements OnInit {
 
   useTip(): void {
     this.tip = true;
-    this.inputName.nativeElement.value = this.character.name;
+    this.inputName.nativeElement.value = this.character.name.replace(this.regex, '');
   }
 
   answerQuestion(value: string): void {
     const nameApi = this.listCharacter[this.currentPositionList].name.toUpperCase();
+
+    // Remove lixo do nome que esta entre ()
+    const nameAux = nameApi.replace(this.regex, '');
+
     // GARANTE QUE A PERGUNTA NAO FOI RESPONDIDA
     if (this.checkAnswer()) {
       // COMPARA E REALIZA A SOMA E NOTIFICAÇÃO DOS PONTOS
-      if (nameApi === value.toUpperCase()) {
+      if (nameAux === value.toUpperCase()) {
         if (!this.tip) {
           this.addPoints();
           this.service.notify('Congratulations! +1');
