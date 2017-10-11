@@ -1,7 +1,7 @@
 Bem vindo ao Desafio Marvel!
 ===================
 
-![desafio](https://vignette2.wikia.nocookie.net/logopedia/images/a/a8/Marvel-logo.png)
+![desafio](https://raw.githubusercontent.com/siqueiradg/desafio-marvel/master/marvel.JPG)
 
 ----------
 Quer dar uma olhadinha? - [demonstração](https://marvel-desafio.firebaseapp.com/)
